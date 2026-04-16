@@ -1,0 +1,46 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# תלויות - חובה להתעלם מהתיקייה הזו!
+node_modules/
+
+# תיקיית תוצרי הבנייה (build) של Vite
+dist/
+dist-ssr/
+
+# קבצי יומן (Logs)
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# משתני סביבה (אם תוסיף בעתיד סיסמאות או מפתחות API)
+.env
+.env.local
+
+# קבצי מערכת הפעלה ועורכי קוד (כמו VS Code)
+.DS_Store
+.vscode/
+.idea/

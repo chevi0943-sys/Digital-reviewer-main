@@ -1,0 +1,798 @@
+/* World-Class 2026 Premium Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --brand-900: #0b1f3b;
+  --brand-800: #0d2a4e;
+  --brand-700: #103a6a;
+  --brand-600: #1456a3;
+  --brand-500: #1b74d1;
+  --accent-500: #10b981;
+  --danger-500: #ef4444;
+  --surface-0: #ffffff;
+  --surface-50: #f6f8fb;
+  --surface-100: #eef2f7;
+  --text-900: #0b1220;
+  --text-700: #334155;
+  --muted-600: #64748b;
+  --ring: rgba(27, 116, 209, 0.35);
+  --shadow-sm: 0 1px 2px rgba(2, 6, 23, 0.06);
+  --shadow-md: 0 10px 30px rgba(2, 6, 23, 0.10);
+  --shadow-lg: 0 20px 60px rgba(2, 6, 23, 0.14);
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100dvh !important;
+  width: 100vw !important;
+  overflow: hidden !important;
+  /* חוסם גלילה לחלוטין */
+  background-color: #ffffff;
+  font-size: 12px;
+  /* זה הופך להיות 1rem החדש שלך */
+}
+
+.app-wrapper {
+  background-color: #f8fafc;
+  height: 100dvh;
+  box-sizing: border-box;
+  padding: clamp(10px, 3vh, 40px) 20px;
+  /* הריווח יקטן אוטומטית במסך קטן */
+  font-family: 'Heebo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* ממורכז לאמצע */
+}
+
+.modern-card {
+  background: transparent !important;
+  /* ביטול הרקע הלבן */
+  box-shadow: none !important;
+  /* ביטול הצללית */
+  border: none !important;
+  /* ביטול המסגרת */
+  padding: 0 !important;
+  /* ביטול הריווח הפנימי המיותר */
+  width: 100%;
+  max-width: 400px;
+  /* צמצום הרוחב למראה עדין יותר */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* ניצול כל הגובה הפנוי */
+}
+
+/* Particle Background Animation */
+.app-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(27, 116, 209, 0.08) 0%, transparent 55%),
+    radial-gradient(circle at 82% 18%, rgba(16, 185, 129, 0.06) 0%, transparent 55%);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+
+.modern-card:hover {
+  transform: translateY(-2px);
+  /* box-shadow: 0 24px 70px rgba(2, 6, 23, 0.16); */
+}
+
+/* Premium Typography */
+.header-title {
+  font-size: clamp(20px, 2.2vw + 14px, 26px);
+  font-weight: 800;
+  color: var(--text-900);
+  margin-bottom: 10px;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.header-subtitle {
+  color: var(--muted-600);
+  font-size: clamp(14px, 1.2vw + 12px, 16px);
+  font-weight: 500;
+  margin-top: 0;
+  text-align: center;
+}
+
+/* Futuristic Progress Bar */
+.progress-container {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-700);
+}
+
+.progress-track {
+  width: 100%;
+  height: 12px;
+  background: rgba(15, 23, 42, 0.06);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand-600) 0%, var(--brand-500) 55%, rgba(27, 116, 209, 0.75) 100%);
+  border-radius: 20px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.progress-fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+  animation: progressShine 2.4s linear infinite;
+}
+
+@keyframes progressShine {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Premium Task Area with Neumorphism */
+.task-area {
+  border: 2px dashed #cbd5e1;
+  border-radius: 16px;
+  padding: clamp(10px, 2vh, 30px) 20px;
+  text-align: center;
+  /* פה הקסם: flex: 1 אומר לו לתפוס את כל המקום הפנוי, min-height: 0 מרשה לו להתכווץ אם חסר מקום */
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  background-color: #f8fafc;
+}
+
+.task-area:hover {
+  transform: translateY(-1px);
+  /* box-shadow: 0 16px 45px rgba(2, 6, 23, 0.12); */
+  border-color: rgba(27, 116, 209, 0.18);
+}
+
+/* Premium Image Container with 3D Effects */
+.preview-image-container {
+  width: 100%;
+  /* במקום גובה קבוע של 220px, הגובה ינוע בין 100px ל-220px בהתאם לגובה המסך הפנוי */
+  max-height: clamp(100px, 25vh, 220px);
+  flex: 1;
+  min-height: 0;
+  margin-bottom: clamp(10px, 2vh, 20px);
+  border-radius: 12px;
+  overflow: hidden;
+  /* box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); */
+  position: relative;
+}
+
+.preview-image-container:hover {
+  transform: translateY(-1px);
+  /* box-shadow: 0 18px 55px rgba(2, 6, 23, 0.14); */
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* שונה מ-cover ל-contain כדי שהתמונה לא תיחתך כשמקטינים אותה */
+  transition: opacity 0.3s;
+}
+
+/* Premium Buttons with Magnetic Hover Effect */
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: transform 180ms var(--ease), box-shadow 180ms var(--ease), background-color 180ms var(--ease), border-color 180ms var(--ease), color 180ms var(--ease);
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+@media (min-width: 641px) {
+  .task-actions>.btn {
+    flex: 1;
+  }
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Premium Button Variants */
+.primary {
+  background: linear-gradient(180deg, var(--brand-500) 0%, var(--brand-600) 100%);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(27, 116, 209, 0.25);
+}
+
+.primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(27, 116, 209, 0.28);
+}
+
+.primary:active:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.secondary {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-700);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: var(--shadow-sm);
+}
+
+.secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(27, 116, 209, 0.18);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.danger {
+  background: linear-gradient(180deg, #f87171 0%, var(--danger-500) 100%);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(239, 68, 68, 0.25);
+}
+
+.danger:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(239, 68, 68, 0.30);
+}
+
+.success-btn {
+  background: linear-gradient(180deg, #34d399 0%, var(--accent-500) 100%);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(16, 185, 129, 0.24);
+}
+
+.success-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(16, 185, 129, 0.30);
+}
+
+/* Premium Navigation */
+.bottom-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: clamp(15px, 3vh, 40px);
+  /* יורד מ-40 פיקסלים ל-15 כשצפוף */
+  padding-top: clamp(10px, 2vh, 20px);
+  border-top: 1px solid #f1f5f9;
+  flex-shrink: 0;
+  /* שומר על הכפתורים למטה שלא יתכווצו או ייעלמו */
+}
+
+.bottom-nav>* {
+  flex: 1;
+}
+
+.bottom-nav .btn {
+  width: 100%;
+}
+
+.bottom-nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(27, 116, 209, 0.45), transparent);
+  border-radius: 2px;
+}
+
+/* Premium Mobile Responsiveness */
+@media (max-width: 640px) {
+  .app-wrapper {
+    padding: 18px 12px;
+    padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .modern-card {
+    padding: 22px 18px;
+    border-radius: 22px;
+    max-width: 100%;
+  }
+
+  .task-area {
+    min-height: 220px;
+    padding: 22px 16px;
+  }
+
+  .preview-image-container {
+    height: min(210px, 32vh);
+  }
+
+  .btn {
+    padding: 14px 18px;
+    font-size: 15px;
+  }
+
+  .task-actions {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .task-actions>.btn {
+    width: 100%;
+  }
+
+  .header-title {
+    font-size: 22px;
+  }
+
+  .bottom-nav {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 18px;
+  }
+
+  .bottom-nav::before {
+    width: 70px;
+  }
+}
+
+@media (max-width: 414px) {
+  .preview-image-container {
+    height: min(200px, 30vh);
+  }
+}
+
+@media (max-width: 390px) {
+  .modern-card {
+    padding: 20px 16px;
+  }
+
+  .btn {
+    padding: 13px 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .modern-card {
+    padding: 18px 14px;
+  }
+
+  .task-area {
+    padding: 18px 14px;
+  }
+
+  .preview-image-container {
+    height: min(185px, 28vh);
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+
+  .modern-card:hover,
+  .task-area:hover,
+  .preview-image-container:hover,
+  .image-preview-wrapper img:hover {
+    transform: none;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .app-wrapper {
+    background: radial-gradient(1200px 600px at 10% 0%, rgba(27, 116, 209, 0.22) 0%, transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(16, 185, 129, 0.16) 0%, transparent 55%),
+      linear-gradient(180deg, #0b1f3b 0%, #061426 100%);
+  }
+
+  .modern-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+  }
+
+  .header-title {
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .header-subtitle,
+  .progress-text {
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .task-area {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.88);
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+}
+
+/* Premium Loading State */
+.loading-skeleton {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+
+/* Insurance.css */
+
+/* רקע כללי של האפליקציה - אפור/תכלת עדין מאוד */
+.app-wrapper {}
+
+/* הכרטיסייה המרכזית (Glass/Soft effect) */
+/* .modern-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+  padding: 35px 30px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+} */
+
+/* כותרות */
+.header-title {
+  font-size: 24px;
+  color: #0f172a;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.header-subtitle {
+  color: #64748b;
+  font-size: 15px;
+  margin-top: 0;
+}
+
+/* סרגל התקדמות */
+.progress-container {
+  margin-bottom: clamp(15px, 3vh, 35px);
+  /* יורד מ-35 פיקסלים ל-15 כשצפוף */
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background-color: #f1f5f9;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  /* מעבר צבע (גרדיאנט) כחול מודרני */
+  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 10px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.task-area.success-state {
+  background-color: #f0fdf4;
+  border-color: #86efac;
+}
+
+
+/* כפתורים כלליים ועיצוב קומפוננטת ה-Button שלך */
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* סוגי כפתורים */
+.primary {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
+
+.secondary {
+  background-color: #ffffff;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.danger {
+  background-color: #ef4444;
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+
+.danger:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background-color: #dc2626;
+}
+
+.success-btn {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
+}
+
+/* תיבת שגיאה מודרנית */
+.error-box {
+  margin-top: 20px;
+  background-color: #fef2f2;
+  border-right: 4px solid #ef4444;
+  padding: 16px;
+  border-radius: 8px 12px 12px 8px;
+  color: #991b1b;
+  width: 100%;
+  font-size: 14px;
+  text-align: right;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.1);
+}
+
+/* ספינר הניתוח */
+.analyzing-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 800;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+.spin-icon {
+  animation: spin 2s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================= */
+/* מסך פתיחה (Welcome Screen)                */
+/* ========================================= */
+.welcome-card {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.welcome-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.welcome-title {
+  font-size: 28px;
+  color: #0f172a;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.welcome-text {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  padding: 0 10px;
+}
+
+.start-btn {
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 18px;
+  border-radius: 16px;
+}
+
+
+/* 1. הגדרת גודל בסיסי קטן יותר */
+body {
+  font-size: 12px;
+  /* הבסיס */
+}
+
+/* 2. כותרת גדולה (למשל "צלם את הסלון") */
+.modern-card .header-title {
+  font-size: 1.8rem;
+  /* (1.8 * 12px) = 21.6px */
+}
+
+/* 3. טקסט רגיל */
+.modern-card .welcome-text {
+  font-size: 1rem;
+  /* 12px */
+}
+
+/* 4. טקסט על הכפתור */
+.modern-card .btn {
+  font-size: 1.1rem;
+  /* (1.1 * 12px) = 13.2px */
+}
+
+
+
+
+
+
+
+
+
+.task-area {
+  /* מוחק את המסגרת המקווקוות */
+  border: none !important;
+  /* מוחק את הרקע האפור/ירקרק הפנימי */
+  background: transparent !important;
+  /* מבטל צללים אם יש */
+  box-shadow: none !important;
+
+  /* שומר על גמישות בלי לתפוס נפח מיותר */
+  padding: 0 !important;
+  margin: 0 auto !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* הכותרת הראשית (למשל "צלם את הסלון") */
+.header-title {
+  font-size: 18px !important;
+  /* במקום 24-26 */
+  margin-bottom: 4px !important;
+}
+
+/* טקסט ההסבר ("אנא ודא שהחלל מואר...") */
+.header-subtitle {
+  font-size: 13px !important;
+  /* קטן ועדין */
+  line-height: 1.4 !important;
+  max-width: 80%;
+  /* כדי שלא יתפרס על כל הרוחב */
+  margin: 0 auto 15px !important;
+}
+
+/* הטקסט בתוך אזור האימות ("התמונה אומתה בהצלחה") */
+.task-area h2,
+.task-area p {
+  font-size: 16px !important;
+  margin: 5px 0 !important;
+}
+
+.btn {
+  padding: 10px 20px !important;
+  /* מקטין את גובה הכפתור */
+  font-size: 14px !important;
+  /* מקטין את הכתב בכפתור */
+  border-radius: 10px !important;
+  /* פינות פחות עגולות בצורה מוגזמת */
+}
+
+.bottom-nav {
+  gap: 10px !important;
+  /* מצמצם רווח בין כפתורים */
+  margin-top: 15px !important;
+}
