@@ -911,8 +911,7 @@ export default function InsuranceUploadApp() {
           {/* Brand */}
           <div className="brand-bar" style={{ justifyContent: 'center', paddingBottom: 0, marginBottom: 24 }}>
             <div className="brand-logo">
-              <div className="brand-icon">🛡️</div>
-              <span className="brand-name">ביטוח ישיר<span>AI</span></span>
+              <img className="brand-logo-img" src="/bituach-yashir-logo.png" alt="ביטוח ישיר" />
             </div>
           </div>
 
@@ -983,8 +982,7 @@ export default function InsuranceUploadApp() {
           {/* Brand bar */}
           <div className="brand-bar">
             <div className="brand-logo">
-              <div className="brand-icon">🛡️</div>
-              <span className="brand-name">ביטוח ישיר<span>AI</span></span>
+              <img className="brand-logo-img" src="/bituach-yashir-logo.png" alt="ביטוח ישיר" />
             </div>
             <span style={{ fontSize: 12, color: 'var(--text-400)', fontWeight: 500 }}>
               אימות נכס
